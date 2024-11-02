@@ -91,16 +91,16 @@ sensor_kit_base_link:
     pitch: 0.0
     yaw: 3.14159265359
   zed2i_link:
-    x: 0.0
+    x: 0.0999943368718406
     y: 0.0
-    z: 2.0
+    z: 0.248125240515285
     roll: 0.0
     pitch: 0.0
     yaw: 0.0
   fp_vrtk_link:
-    x: 1.0
+    x: 0.0280158179045505
     y: 0.0
-    z: 2.0
+    z: 0.308
     roll: 0.0
     pitch: 0.0
     yaw: 0.0
@@ -112,37 +112,37 @@ sensor_kit_base_link:
     pitch: 0.0
     yaw: 0.0
   gnss_antenna_right_link:
-    x: -0.31
-    y: 0.0
-    z: 0.149
+    x: 0.0
+    y: -0.309999999999999 
+    z: 0.313
     roll: 0.0
     pitch: 0.0
     yaw: 0.0
   gnss_antenna_left_link:
-    x: 0.31
-    y: 0.0
-    z: 0.149
+    x: 0.0
+    y: 0.310000000000002
+    z: 0.313
     roll: 0.0
     pitch: 0.0
     yaw: 0.0
   imu_tm431_link:
     x: 0.0
     y: 0.0
-    z: 0.195
+    z: 0.4195
     roll: 0.0
     pitch: 0.0
     yaw: 0.0
   rs_helios_link:
     x: 0.0
     y: 0.0
-    z: 0.21
+    z: 0.434
     roll: 0.0
     pitch: 0.0
     yaw: 0.0
   rs_m1_link:
-    x: 0.03
+    x: 0.0299201190023903  
     y: 0.0
-    z: 0.024
+    z: 0.187
     roll: 0.0
     pitch: 0.0
-    yaw: 0.0
+    yaw: 0.0    
