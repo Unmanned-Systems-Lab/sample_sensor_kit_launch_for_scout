@@ -4,16 +4,16 @@
   <arg name="model" default="Helios"/>
   <arg name="max_range" default="150.0"/>
   <arg name="min_range" default="0.2"/>
-  <arg name="sensor_frame" default="robosense"/>
-  <arg name="return_mode" default="SingleStrongest"/>
-  <arg name="sensor_ip" default="192.168.1.200"/>
-  <arg name="host_ip" default="255.255.255.255"/>
-  <arg name="data_port" default="2368"/>
-  <arg name="gnss_port" default="7788"/>
+  <arg name="sensor_frame" default="rs_helios_link"/>
+  <arg name="return_mode" default="Strongest"/>
+  <arg name="sensor_ip" default="192.168.1.201"/>
+  <arg name="host_ip" default="192.168.1.102"/>
+  <arg name="data_port" default="3344"/>
+  <arg name="gnss_port" default="5566"/>
   <arg name="scan_phase" default="0.0"/>
   <arg name="cloud_min_angle" default="0"/>
   <arg name="cloud_max_angle" default="360"/>
-  <arg name="vehicle_mirror_param_file"/>
+  <arg name="vehicle_mirror_param_file" default="/home/lhl/autoware_for_scout/src/vehicle/sample_vehicle_launch_for_scout/scout_vehicle_description/config/mirror.param.yaml"/>
   <arg name="container_name" default="robosense_node_container"/>
 
   <include file="$(find-pkg-share common_sensor_launch)/launch/nebula_node_container.launch.py">
