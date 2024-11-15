@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'pose_twist_extractor = fixposition_extractor.pose_twist_extractor:main',
+            'imu_to_acc = fixposition_extractor.imu_to_acc:main', 
         ],
     },
 )
