@@ -11,4 +11,6 @@
     </node>
      <!-- 引用 pose_twist_extractor.launch.xml 文件 -->
     <include file="$(find-pkg-share fixposition_extractor)/launch/pose_twist_extractor.launch.xml" />
+        <!-- 使用 <include> 标签包含 imu.launch.py 文件 -->
+    <include file="$(find-pkg-share tm_imu)/launch/imu.launch.py"/>
 </launch>

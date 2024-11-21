@@ -14,8 +14,8 @@ class SteeringStatusPublisher(Node):
         self.publisher = self.create_publisher(SteeringReport, '/vehicle/status/steering_status', qos_profile)
 
         # 定时器发布消息
-        self.timer = self.create_timer(1.0, self.publish_steering_status)
-        self.get_logger().info("SteeringStatusPublisher node has started with reliable QoS.")
+        self.timer = self.create_timer(0.1, self.publish_steering_status)
+        #self.get_logger().info("SteeringStatusPublisher node has started with reliable QoS.")
 
     def publish_steering_status(self):
         # 创建 SteeringReport 消息
@@ -27,9 +27,9 @@ class SteeringStatusPublisher(Node):
 
         # 发布消息
         self.publisher.publish(steering_status)
-        self.get_logger().info("Published SteeringReport message: "
-                               f"stamp: {steering_status.stamp.sec}.{steering_status.stamp.nanosec}, "
-                               f"steering_tire_angle: {steering_status.steering_tire_angle}")
+        #self.get_logger().info("Published SteeringReport message: "
+        #                       f"stamp: {steering_status.stamp.sec}.{steering_status.stamp.nanosec}, "
+        #                       f"steering_tire_angle: {steering_status.steering_tire_angle}")
 
 def main(args=None):
     rclpy.init(args=args)

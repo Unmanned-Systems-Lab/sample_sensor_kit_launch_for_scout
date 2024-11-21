@@ -28,8 +28,8 @@ class MultiTopicPublisher(Node):
         )
 
         # 定时器分别发布四个消息
-        self.timer = self.create_timer(1.0, self.publish_messages)
-        self.get_logger().info("MultiTopicPublisher node has started with reliable QoS.")
+        self.timer = self.create_timer(0.1, self.publish_messages)
+        #self.get_logger().info("MultiTopicPublisher node has started with reliable QoS.")
 
     def publish_messages(self):
         self.publish_predicted_objects()
@@ -44,7 +44,7 @@ class MultiTopicPublisher(Node):
         predicted_objects.objects = []  # 确保 objects 字段为空
 
         self.predicted_objects_publisher.publish(predicted_objects)
-        self.get_logger().info("Published empty PredictedObjects message.")
+        #self.get_logger().info("Published empty PredictedObjects message.")
 
     def publish_occupancy_grid(self):
         occupancy_grid = OccupancyGrid()
@@ -67,14 +67,14 @@ class MultiTopicPublisher(Node):
         occupancy_grid.data = [1] * (occupancy_grid.info.width * occupancy_grid.info.height)
 
         self.occupancy_grid_publisher.publish(occupancy_grid)
-        self.get_logger().info("Published OccupancyGrid message with current timestamp.")
+        #self.get_logger().info("Published OccupancyGrid message with current timestamp.")
 
     def publish_traffic_signals(self):
         traffic_signals = TrafficSignalArray()
         traffic_signals.signals = []
 
         self.traffic_signals_publisher.publish(traffic_signals)
-        self.get_logger().info("Published empty TrafficSignalArray message.")
+        #self.get_logger().info("Published empty TrafficSignalArray message.")
 
     def publish_pointcloud(self):
         pointcloud = PointCloud2()
@@ -95,7 +95,7 @@ class MultiTopicPublisher(Node):
         pointcloud.is_dense = True
 
         self.pointcloud_publisher.publish(pointcloud)
-        self.get_logger().info("Published empty PointCloud2 message with current timestamp.")
+        #self.get_logger().info("Published empty PointCloud2 message with current timestamp.")
 
 def main(args=None):
     rclpy.init(args=args)
