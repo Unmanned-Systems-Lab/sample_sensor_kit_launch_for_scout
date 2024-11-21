@@ -26,6 +26,8 @@ setup(
         'console_scripts': [
             'pose_twist_extractor = fixposition_extractor.pose_twist_extractor:main',
             'imu_to_acc = fixposition_extractor.imu_to_acc:main', 
+            'perception_sim = fixposition_extractor.perception_sim:main',
+            'control_sim = fixposition_extractor.control_sim:main',
         ],
     },
 )

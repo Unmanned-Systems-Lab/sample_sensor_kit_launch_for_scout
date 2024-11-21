@@ -47,24 +47,10 @@ class OdometryPublisher(Node):
         # 创建新的 Odometry 消息
         odometry_msg = Odometry()
         odometry_msg.header = msg.header
-        odometry_msg.header.frame_id = "map"
+        odometry_msg.header.frame_id="map"
         odometry_msg.child_frame_id = 'base_link'
-
-        # 将 pose 和 twist 都设置为 0
-        odometry_msg.pose.pose.position.x = 0.656501
-        odometry_msg.pose.pose.position.y = 5.263
-        odometry_msg.pose.pose.position.z = 0.0
-        odometry_msg.pose.pose.orientation.x = 0.0
-        odometry_msg.pose.pose.orientation.y = 0.0
-        odometry_msg.pose.pose.orientation.z = 0.7071
-        odometry_msg.pose.pose.orientation.w = 0.7071  # 单位四元数表示无旋转
-
-        odometry_msg.twist.twist.linear.x = 0.0
-        odometry_msg.twist.twist.linear.y = 0.0
-        odometry_msg.twist.twist.linear.z = 0.0
-        odometry_msg.twist.twist.angular.x = 0.0
-        odometry_msg.twist.twist.angular.y = 0.0
-        odometry_msg.twist.twist.angular.z = 0.0
+        odometry_msg.pose = msg.pose  # 假设 ODOMENU 中的 pose 已包含 covariance 信息
+        odometry_msg.twist = msg.velocity  # 假设 ODOMENU 中的 velocity 已包含 covariance 信息
 
         # 发布组合后的 Odometry 消息
         self.odometry_pub.publish(odometry_msg)
@@ -75,21 +61,17 @@ class OdometryPublisher(Node):
         transform.header.frame_id = 'map'
         transform.child_frame_id = 'base_link'
 
-        # 设置位置和方向为 0
-        transform.transform.translation.x = 0.3064987063407898
-        transform.transform.translation.y = 3.9130029678344727
-        transform.transform.translation.z = 0.0
-        transform.transform.rotation.x = 0.0
-        transform.transform.rotation.y = 0.0
-        transform.transform.rotation.z = 0.6771090896887927
-        transform.transform.rotation.w = 0.7358826541377467  # 单位四元数表示无旋转
+        # 设置位置和方向
+        transform.transform.translation.x = pose_msg.position.x
+        transform.transform.translation.y = pose_msg.position.y
+        transform.transform.translation.z = pose_msg.position.z
+        transform.transform.rotation = pose_msg.orientation
 
         # 发布 transform
         self.tf_broadcaster.sendTransform(transform)
 
         # 输出日志信息
-        #self.get_logger().info("Published zeroed Odometry and TF from map to base_link")
-
+        #self.get_logger().info("Published Pose, Twist, Odometry, and TF from map to base_link")
 
 def main(args=None):
     rclpy.init(args=args)

@@ -37,14 +37,14 @@ class IMUToAccelerationNode(Node):
 
         # 提取线性加速度数据并填充 AccelWithCovariance 消息
 
-        acceleration_msg.accel.accel.linear.x= 0.0
-        acceleration_msg.accel.accel.linear.y = 0.0
-        acceleration_msg.accel.accel.linear.z = 0.0
+        acceleration_msg.accel.accel.linear.x= msg.linear_acceleration.x
+        acceleration_msg.accel.accel.linear.y = msg.linear_acceleration.y
+        acceleration_msg.accel.accel.linear.z = msg.linear_acceleration.z
         
         # 提取角加速度数据并填充 AccelWithCovariance 消息
-        acceleration_msg.accel.accel.angular.x = 0.0
-        acceleration_msg.accel.accel.angular.y = 0.0
-        acceleration_msg.accel.accel.angular.z = 0.0
+        acceleration_msg.accel.accel.angular.x = msg.angular_velocity.x
+        acceleration_msg.accel.accel.angular.y = msg.angular_velocity.y
+        acceleration_msg.accel.accel.angular.z = msg.angular_velocity.z
         
         # 设定协方差矩阵，这里假设为一个简单的零矩阵（需要根据实际数据进行调整）
         acceleration_msg.accel.covariance = [0.0] * 36
