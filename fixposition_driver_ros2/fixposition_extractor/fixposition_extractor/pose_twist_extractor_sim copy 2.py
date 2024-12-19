@@ -25,7 +25,7 @@ class OdometryPublisher(Node):
         self.twist_pub = self.create_publisher(Twist, 'twist', qos_profile)
         self.odometry_pub = self.create_publisher(Odometry, 'localization/kinematic_state', qos_profile)
 
-        # 初始化 TF 广播器src/sensor_kit/sample_sensor_kit_launch_for_scout/fixposition_driver_ros2/fixposition_extractor/fixposition_extractor/pose_twist_extractor_sim.py
+        # 初始化 TF 广播器
         self.tf_broadcaster = TransformBroadcaster(self)
 
         # 订阅 ODOMENU 消息
